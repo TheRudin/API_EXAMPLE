@@ -19,10 +19,13 @@ class Document {
         this.name = document;
     }
     static save(x) {
-            collection.save(x).then(
-            meta => console.log('Document saved:', meta._rev),
-            err => console.error('Failed to save document:', err))
-    }
+      collection.save(x).then(
+      meta => console.log('Document saved:', meta._rev, x),
+      err => console.error('Failed to save document:', err))
+    };
+    static get(x) {
+      collection.all().toArray()
+    };
 }
 module.exports=Document
 

@@ -10,9 +10,3 @@ class QuickstartUser(HttpUser):
         self.client.post("/testData", {
             'username': 'foo', 'password': 'bar'
         })
-
-    @task(3)
-    def view_item(self):
-        for item_id in range(10):
-            self.client.get(f"/item?id={item_id}", name="/item")
-            time.sleep(1)

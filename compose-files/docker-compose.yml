@@ -2,6 +2,9 @@ version: '3.6'
 
 services:
   arangodb:
+    networks:
+       front:
+          ipv4_address: 172.16.238.9    
     image: arangodb:latest
     environment:
       ARANGO_ROOT_PASSWORD: rootpassword
@@ -12,6 +15,9 @@ services:
       - arangodb_apps_data_container:/var/lib/arangodb3-apps
 
   apiexample:
+    networks:
+       front:
+          ipv4_address: 172.16.238.10    
     build: .
     command: node app.js
     ports:
@@ -23,6 +29,9 @@ services:
     - arangodb
 
   locustio:
+    networks:
+       front:
+          ipv4_address: 172.16.238.11    
     image: locustio/locust    
     ports:
     - "8089:8089"
@@ -37,3 +46,7 @@ services:
 volumes:
   arangodb_data_container:
   arangodb_apps_data_container:
+
+networks:
+  front:
+   external: true

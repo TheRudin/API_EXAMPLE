@@ -6,8 +6,10 @@ class QuickstartUser(HttpUser):
 
     @task
     def index_page(self):
-        self.client.get("/hello")
-        self.client.get("/world")
+        self.client.get("/testData")
+        self.client.post("/testData", {
+            'username': 'foo', 'password': 'bar'
+        })
 
     @task(3)
     def view_item(self):

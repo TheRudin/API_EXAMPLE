@@ -8,9 +8,19 @@ const db = new Database('http://127.0.0.1:8089');
 db.useBasicAuth("root", "rootpassword");
 
 //Dem DB Treiber mitteilen, dass er folgende DB nutzen soll:
+db.createDatabase('Fallstudie', function (err) {
+  if (!err) console.log('Datenbank erstellt');
+  else console.error('Failed to create database:', err);
+});
+
 db.useDatabase('Fallstudie');
 
 //Die zu benutzende Collection definieren	
+collection.create().then(
+  () => console.log('Collection created'),
+  err => console.error('Failed to create collection:', err)
+);
+
 const collection = db.collection('scheissCollection');
 
 //Klassendefinitionen

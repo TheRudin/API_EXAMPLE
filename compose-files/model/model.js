@@ -2,7 +2,7 @@
 
 //Connectionstring noch mit JSON als COnfigfile auslagern
 const Database = require('arangojs').Database;
-const db = new Database('http://127.0.0.1:8089');
+const db = new Database('http://127.0.0.1:8529');
 
 //Login data für ArangoDB
 db.useBasicAuth("root", "rootpassword");
